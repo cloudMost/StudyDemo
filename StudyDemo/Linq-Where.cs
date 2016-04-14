@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace StudyDemo
 {
-    class Program
+    class Linq_Where
     {
         //static void Main(string[] args)
         //{
