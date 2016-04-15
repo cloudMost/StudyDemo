@@ -15,29 +15,16 @@ namespace StudyDemo
     {
         static void Main(string[] args)
         {
-            List<Student> students = new List<Student>()
+            string sql = "insert into Autofac.Orangize(ORANGIZECODE) values(@ORANGIZECODE)";
+            Orangize o = new Orangize()
             {
-                new Student() { Id=1,Name="xxx"},
-                new Student() { Id=2,Name="zzz" },
-                new Student() { Id=3,Name="ccc" },
-                new Student() { Id=4,Name="vvv" },
-                new Student() { Id=5,Name="bbb" },
-                new Student() { Id=6,Name="nnn" }
+                OrangizeCode = Guid.NewGuid().ToString()
             };
-            using (IDbConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ToString()))
-            {
-                Orangize o = new Orangize();
-                o.OrangizeCode = "sdfadssssssf";
-                string query = "insert into Autofac.Orangize(ORANGIZECODE) values(@OrangizeCode)";
-                con.Execute(query,o);
-            }
+            dapperUtil.AddOrUpdate<Orangize>(sql, o);
 
-            using (IDbConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ToString()))
-            {
-                string query = "select * from Autofac.Orangize";
-                var list=con.Query<Orangize>(query).ToList();
-                Console.WriteLine(JsonConvert.SerializeObject(list));
-            }
+            var list=dapperUtil.Query<Orangize>("select * from Autofac.Orangize").ToList();
+            Console.WriteLine(JsonConvert.SerializeObject(list));
+            Console.Write(dapperUtil.ConnectionString);
             Console.ReadKey();
 
         }

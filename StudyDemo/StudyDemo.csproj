@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
     <Compile Include="dapperUtil.cs" />
     <Compile Include="Func-Action.cs" />
     <Compile Include="Linq-All.cs" />
