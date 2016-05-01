@@ -20,10 +20,10 @@ namespace StudyDemo
         //        new Student() { Id=2,Name="bbb" },
         //        new Student() { Id=2,Name="nnn" }
         //    };
-        //    IEnumerable<Student> stus=students.Where(s=>s.Id==2).OrderBy(s=>s.Name);
+        //    IEnumerable<Student> stus = students.Where(s => s.Id == 2).OrderBy(s => s.Name);
         //    string json = JsonConvert.SerializeObject(stus);
         //    Console.WriteLine(json);
-        //    List<Student> ss=JsonConvert.DeserializeObject<List<Student>>(json);
+        //    List<Student> ss = JsonConvert.DeserializeObject<List<Student>>(json);
         //    Console.ReadKey();
 
         //}

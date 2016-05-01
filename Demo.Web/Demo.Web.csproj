@@ -103,6 +103,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Sys\Moudule\common.js" />
+    <Content Include="Content\bootstrap-table.css" />
+    <Content Include="Content\bootstrap-table.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome\font-awesome-ie7.css" />
+    <Content Include="Content\font-awesome\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome\font-awesome.css" />
+    <Content Include="Content\font-awesome\font-awesome.min.css" />
     <Content Include="Content\themes\black\accordion.css" />
     <Content Include="Content\themes\black\calendar.css" />
     <Content Include="Content\themes\black\combo.css" />
@@ -387,10 +397,33 @@
     <Content Include="Content\themes\metro\validatebox.css" />
     <Content Include="Content\themes\metro\window.css" />
     <Content Include="Content\themes\mobile.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Sys\Views\web.config" />
     <Content Include="Areas\Sys\Views\Orangize\Index.cshtml" />
+    <Content Include="Areas\Sys\Views\Orangize\AddOrangize.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Sys\Views\Orangize\JS.cshtml" />
+    <Content Include="Areas\Sys\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Sys\Views\Shared\_layout.cshtml" />
+    <Content Include="Areas\Sys\Views\Users\DataTable.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
+    <Content Include="Scripts\bootstrap-table-zh-CN.min.js" />
+    <Content Include="Scripts\bootstrap-table.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
@@ -398,6 +431,8 @@
     <Content Include="Scripts\jquery.easyui-1.4.3.min.js" />
     <Content Include="Scripts\jquery.easyui.mobile-1.4.3.js" />
     <Content Include="Scripts\jquery.easyui.mobile-1.4.3.min.js" />
+    <Content Include="Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\locale\easyui-lang-af.js" />
     <Content Include="Scripts\locale\easyui-lang-am.js" />
     <Content Include="Scripts\locale\easyui-lang-ar.js" />
@@ -439,7 +474,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Sys\Controllers\HomeController.cs" />
     <Compile Include="Areas\Sys\Controllers\OrangizeController.cs" />
+    <Compile Include="Areas\Sys\Controllers\UsersController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -460,9 +497,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Sys\Models\" />
     <Folder Include="Areas\Sys\Views\Home\" />
-    <Folder Include="Areas\Sys\Views\Shared\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataProvider\DataProvider.csproj">

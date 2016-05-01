@@ -11,7 +11,7 @@ namespace DataProvider
         public string OrangizeCode { get; set; }
         public string OrangizeName { get; set; }
         public string OrangizeNickName { get; set; }
-        public virtual List<User> Users { get; set; }
+        public virtual List<Users> Users { get; set; }
         public string ParentCode { get; set; }
 
     }

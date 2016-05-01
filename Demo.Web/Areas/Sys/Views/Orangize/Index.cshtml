@@ -1,27 +1,70 @@
-﻿<link href="~/Content/themes/bootstrap/easyui.css" rel="stylesheet" />
+﻿<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/themes/bootstrap/easyui.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.11.3.min.js"></script>
 
 <script src="~/Scripts/jquery.easyui-1.4.3.min.js"></script>
+ID<input id="txt" type="text" />
+<a id="btn" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+<a id="btnSearch" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'">搜索</a>
 <table id="tb_guid"></table>
-<div class="easyui-accordion" id="tt">
-    <div title="title1">1</div>
-    <div title="title2">2</div>
-</div>
 <script>
     (function () {
-        debugger
-        $.parser.onComplete = function () {
-            alert("111");
-        };
+       
         $("#tb_guid").datagrid({
             url: '/api/Sys/OrangizeApi/Get',
             method:'get',
             width: 500,
             height:300,
             columns: [[
-                { field: 'OrangizeCode', title: '组织代码', width: 100 }
+                { field: 'OrangizeCode', title: '组织代码', width: 100 },
+                { field: 'OrangizeName', title: '组织名称', width: 100, }
             ]]
-            
+        });
+        $('#btn').bind('click', function () {
+            $("<div />").dialog({
+                title:'添加组织',
+                href: '@Url.Action("AddOrangize","Orangize")',
+                width: 500,
+                height: 400,
+                buttons:[{
+                    text:'提交',
+                    handler: function () {
+                        var postData = $("#OrangizeForm").serializeArray();
+                        console.log(postData);
+                        $.post('/api/Sys/OrangizeApi/Add', postData, function (data) {
+                            console.log(data);
+
+                        });
+                    }
+                },{
+                    text:'关闭',
+                    handler:function(){}
+                }]
+
+            });
+        });
+        $("#btnSearch").bind("click", function () {
+            var row;//拷贝行
+            var data = $("#tb_guid").datagrid("getRows");
+            console.log(data);
+            var value = $("#txt").val();//搜索框值
+            for (var index in data) {
+                if (data[index].OrangizeCode==value)
+                {
+                    //拷贝当前行
+                    row = data[index];
+                    //删除当前行
+                    $("#tb_guid").datagrid("deleteRow",index);
+                    break;
+                }
+            }
+            console.log(row);
+            //重新插入
+            $("#tb_guid").datagrid("insertRow", {
+                index: 0,
+                row:row
+            });
+
         });
         //$.getJSON("/api/Sys/OrangizeApi/Get", function (data) {
         //    console.log(data);

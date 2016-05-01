@@ -23,8 +23,8 @@ namespace Demo.Web.Areas.Sys
 
             );
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
-               this.AreaName + "Api",
-               "api/" + this.AreaName + "/{controller}/{action}/{id}",
+                this.AreaName + "Api",
+                this.AreaName +"/{controller}/{action}/{id}",
                new { area = this.AreaName, action = RouteParameter.Optional, id = RouteParameter.Optional, namespaceName = new string[] { string.Format("Demo.Web.Areas.{0}.Controllers", this.AreaName) } }
            );
 
