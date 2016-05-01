@@ -1,0 +1,465 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome/font-awesome.css" rel="stylesheet" />
+    <link href="../Content/Panel.css" rel="stylesheet" />
+    <link href="../Content/Table.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap-table.min.js"></script>
+    <script src="../Scripts/bootstrap-table-zh-CN.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        /**
+            页面右侧导航
+        */
+        .navbar {
+            padding: 0;
+            margin: 0;
+            border: none;
+            height: 45px;
+            min-height: 45px;
+            z-index: 200;
+        }
+
+        .navbar .navbar-inner {
+                border: 0;
+                border-radius: 0;
+                background-clip: padding-box;
+                margin: 0;
+                padding-left: 0;
+                padding-right: 0;
+                min-height: 45px;
+                position: relative;
+                background: #2dc3e8;
+            }
+
+        .page-slider {
+            position: absolute;
+            width: 224px;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+        .page-slider:before{
+            content: "";
+            position: fixed;
+            display: block;
+            width: 219px;
+            bottom: 0;
+            top: 0;
+            left: 5px;
+            background-color: #fff;
+            -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+            box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+            z-index: 1;
+        }
+
+        .slider-menu {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            margin-left: 5px;
+        }
+
+        .page-slider .submenu {
+            list-style: none;
+        }
+
+        .page-slider .slider-menu li:not(.open):hover:before {
+            display: block;
+            background-color: #ff6a00;
+        }
+        .page-slider .slider-menu li:before {
+            display: none;
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -4px;
+            width: 4px;
+            max-width: 4px;
+            overflow: hidden;
+            background-color: #2dc3e8;
+        }
+        .page-slider .slider-menu > li > a {
+            border-top: 1px solid #f3f3f3;
+        }
+        .page-slider .slider-menu a {
+            display: block;
+            height: 38px;
+            line-height: 36px;
+            margin: 0;
+            padding: 0 16px 0 7px;
+            font-size: 13px;
+            text-decoration: none;
+            color: #737373;
+            z-index: 123;
+        }
+        .page-slider .slider-menu li.open{
+            background:#fff;
+        }
+        .page-slider .slider-menu .submenu {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-color: #fbfbfb;
+            border-top: 0;
+            z-index: 123;
+        }
+
+        .page-slider .slider-menu > li > .submenu {
+            background-color: #fbfbfb;
+            box-shadow: inset 0 4px 4px -2px rgba(0,0,0,.15),inset 0 -4px 4px -2px rgba(0,0,0,.15);
+        }
+
+        .page-slider .slider-menu .submenu > li > a {
+            padding-left: 20px;
+        }
+        .page-slider .slider-header-logininfo {
+            margin-left: 5px;
+            height: 40px;
+            margin-bottom: 0;
+            position: relative;
+            z-index:2;
+        }
+        .page-slider .slider-header-logininfo>a{
+            height: 40px;
+            display: block;
+            padding: 0;
+            line-height:40px;
+            text-decoration:none;
+            color:#737373;
+        }
+        /*
+            图片样式
+        */
+        .page-slider .slider-header-logininfo img{
+            width: 40px;
+            height: auto;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            margin-left: 10px;
+            box-shadow: 1px 1px 4px 1px rgba(0,0,0,.15);
+        }
+        .menu-icon-expand {
+            display: inline-block;
+            position: absolute;
+            font-size: 13px;
+            line-height: 10px;
+            height: 10px;
+            width: 10px;
+            right: 12px;
+            top: 15px;
+            margin: 0;
+            text-align: center;
+            padding: 0;
+            text-shadow: none;
+        }
+        /*.page-sidebar .sidebar-menu li.open>a .menu-icon-expand {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }*/
+        .main-container {
+            position: static;
+            padding: 0;
+        }
+
+        .main-container > .page-container {
+            position: relative;
+        }
+
+        /**
+            页面内容
+        */
+        .page-content {
+            display: block;
+            margin-left: 224px;
+            margin-right: 0;
+            margin-top: 0;
+            min-height: 100%;
+            padding: 0;
+        }
+        /*
+            路径导航
+        */
+        .page-breadcrumb {
+            position: relative;
+            background: #f3f3f3;
+            min-height: 40px;
+            line-height: 39px;
+            padding: 0;
+            display: block;
+            z-index: 1;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            display: inline-block;
+            line-height: 24px;
+            margin: 0 22px 0 12px;
+            padding: 0;
+            font-size: 13px;
+            color: #333;
+            border-radius: 0;
+        }
+
+        .breadcrumb > li > i {
+            position: relative;
+            margin-left: 6px;
+            margin-right: 4px;
+            top: 4px;
+        }
+        /*
+            页面内容
+        */
+        .page-body {
+            background: #eee;
+            padding: 18px 20px 24px;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            /*右侧菜单绑定*/
+            $(".menu-dropdown").on("click",function () {
+                var parent = $(this).parent();
+                if (parent.attr("class") == "") {
+                    //设置父级状态open
+                    parent.attr("class", "open");
+                    $(this).children(".menu-icon-expand").css("transform", "rotate(90deg)");
+                    //显示子菜单
+                    $(this).next(".submenu").slideToggle();
+                } else if (parent.attr("class") == "open") {
+                    $(this).children(".menu-icon-expand").css("transform", "rotate(0deg)");
+                    parent.attr("class","");
+                    $(this).next(".submenu").slideToggle("slow");
+                } 
+            });
+            /*右侧菜单绑定*/
+
+            /*panel按钮组事件绑定*/
+            //最大化
+            $(".panel-buttons [data-toggle='maximize']").on("click", function(e) {
+                e.preventDefault();
+                var panel = $(this).parents(".panel").eq(0);
+                var i = $(this).find("i").eq(0);
+                //判断是否已放大
+                if (panel.hasClass("maximize")) {
+                    panel.removeClass("maximize");
+                    i.attr("class", "icon-resize-full");
+                } else {
+                    panel.addClass("maximize");
+                    i.attr("class", "icon-resize-small");
+                }
+            });
+            //收缩
+            $(".panel-buttons [data-toggle='collapse']").on("click", function(e) {
+                e.preventDefault();
+                var panel = $(this).parents(".panel").eq(0);
+                var body = panel.find(".panel-body").eq(0);
+                var i = $(this).find("i").eq(0);
+                //判断是否已经收缩
+                if (panel.hasClass("collapsed")) {
+                    panel.removeClass("collapsed");
+                    body.slideDown(200);
+                    i.attr("class", "icon-minus");
+                } else {
+                    panel.addClass("collapsed");
+                    body.slideUp(200);
+                    i.attr("class", "icon-plus");
+                }
+            });
+            //删除
+            $(".panel-buttons [data-toggle='remove']").on("click", function(e) {
+                e.preventDefault();
+                var panel = $(this).parents(".panel").eq(0);
+                panel.remove();
+            });
+            /*panel按钮组事件绑定*/
+
+
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <i class="sr-only">切换导航</i>
+                    <i class="icon-bar"></i>
+                    <i class="icon-bar"></i>
+                    <i class="icon-bar"></i>
+                </button>
+                <a href="javascript:void(0)" class="navbar-brand">小云的后台管理系统</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!--页面右侧导航-->
+            <div class="page-slider">
+                <!--头部登录信息-->
+                <div class="slider-header-logininfo">
+                    <a href="javascript:void(0)">
+                        <img src="../imgs/hz.jpg"/>
+                        <span>小云</span>
+                        <i class="icon-angle-down"></i>
+                    </a>
+                </div>
+                <!--菜单-->
+                <ul class="nav slider-menu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="glyphicon glyphicon-home"></i>
+                            <span>首页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="icon-book"></i>
+                            <span>容器panel</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="menu-dropdown">
+                            <i class="icon-table"></i>
+                            <span>表格</span>
+                            <i class="menu-icon-expand icon-angle-right"></i>
+                        </a>
+                        <ul class="submenu" style="display:none;">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <span>基础表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <span>带分页数据表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-envelope"></i>  邮件</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-calendar"></i> 日历</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-music"></i> 音乐</a>
+                    </li>
+                    <li>
+                        <a><i class="icon-print"></i> 打印</a>
+                    </li>
+                </ul>
+            </div>
+            <!--页面内容-->
+            <div class="page-content">
+                <!--页面路径导航-->
+                <div class="page-breadcrumb">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home icon-2x"></i>
+                            <a href="#">首页</a>
+                        </li>
+                        <li><a href="#">表格</a></li>
+                        <li class="active">基本</li>
+                    </ul>
+                </div>
+                <!--页面头部-->
+                <!--<div class="page-header">
+
+                </div>-->
+                <!--页面内容-->
+                <div class="page-body">
+                    <!--panel容器-->
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <div class="panel">
+                                <!--头部信息-->
+                                <div class="panel-header">
+                                    <!--图标-->
+                                    <i class="panel-icon icon-table icon-large"></i>
+                                    <!--panel标题-->
+                                    <span class="panel-caption">用户信息</span>
+                                    <!--按钮组-->
+                                    <div class="panel-buttons">
+                                        <a href="javascript:void(0)" data-toggle="collapse">
+                                            <i class="icon-minus"></i>
+                                        </a>
+                                        <a class="" href="javascript:void(0)" data-toggle="maximize">
+                                            <i class="icon-resize-full"></i>
+                                        </a>
+                                        <a href="javascript:void(0)" data-toggle="remove">
+                                            <i class="icon-remove"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--内容-->
+                                <div class="panel-body">
+                                    <!--带分页表格-->
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>用户名</th>
+                                                <th>电子邮箱</th>
+                                                <th>别名</th>
+                                                <th>密码</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>a</td>
+                                                <td>a@qq.com</td>
+                                                <td>A</td>
+                                                <td>123</td>
+                                            </tr>
+                                            <tr>
+                                                <td>b</td>
+                                                <td>b@qq.com</td>
+                                                <td>B</td>
+                                                <td>123</td>
+                                            </tr>
+                                            <tr>
+                                                <td>c</td>
+                                                <td>c@qq.com</td>
+                                                <td>C</td>
+                                                <td>123</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10">
+                            
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</body>
+</html>

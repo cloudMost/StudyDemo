@@ -1,0 +1,12 @@
+﻿.table thead>tr>th{
+    border-bottom:0;
+}
+.table-sort-both{
+    background:url('../imgs/sort_both.png') no-repeat center right;
+}
+.table-sort-asc{
+    background:url('../imgs/sort_asc.png') no-repeat center right;
+}
+.table-sort-desc{
+    background:url('../imgs/sort_desc.png') no-repeat center right;
+}
